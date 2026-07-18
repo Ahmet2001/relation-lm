@@ -1,0 +1,21 @@
+{
+  "protocol": "compiled fullgraph state update; current position 447; non-contiguous packed router-key views",
+  "repeats": 1000,
+  "rows": [
+    {
+      "batch": 1,
+      "fused_ms": 0.1474211883544922,
+      "max_difference": 0.0,
+      "reference_ms": 0.15343002319335938,
+      "speedup": 1.0407596418529623
+    },
+    {
+      "batch": 8,
+      "fused_ms": 0.16662835693359376,
+      "max_difference": 0.0,
+      "reference_ms": 0.16870501708984376,
+      "speedup": 1.0124628256226376
+    }
+  ],
+  "warmup": 100
+}

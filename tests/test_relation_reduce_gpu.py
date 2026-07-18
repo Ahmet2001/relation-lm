@@ -44,7 +44,8 @@ def _reference_context(
 
 
 @pytest.mark.parametrize("batch", [1, 8])
-def test_relation_reduce_kernels(batch: int) -> None:
+@pytest.mark.parametrize("k_out", [5, 8])
+def test_relation_reduce_kernels(batch: int, k_out: int) -> None:
     if not torch.cuda.is_available():
         pytest.skip("CUDA is required")
     torch.manual_seed(20260818 + batch)
@@ -54,7 +55,6 @@ def test_relation_reduce_kernels(batch: int) -> None:
     relation_dim = 128
     hidden_dim = 2304
     output_dim = 576
-    k_out = 8
     position = torch.tensor(context - 1, device=device, dtype=torch.long)
 
     operand_cache = torch.randn(batch, context, relation_dim, device=device)

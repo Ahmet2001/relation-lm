@@ -1,0 +1,149 @@
+{
+  "rows": [
+    {
+      "batch": 1,
+      "cache_max_differences": {
+        "anchor_mean": 4.76837158203125e-07,
+        "anchor_router_conv": 0.0,
+        "anchor_router_raw": 0.0,
+        "anchor_std": 2.384185791015625e-07,
+        "partner_mean": 4.76837158203125e-07,
+        "partner_router_conv": 0.0,
+        "partner_router_raw": 0.0,
+        "partner_std": 1.1920928955078125e-07
+      },
+      "max_boundary_logit_difference": 0.0,
+      "max_token_logit_difference": 0.0,
+      "maximum_difference": 4.76837158203125e-07,
+      "prefix": 95,
+      "status": "PASS"
+    },
+    {
+      "batch": 8,
+      "cache_max_differences": {
+        "anchor_mean": 4.76837158203125e-07,
+        "anchor_router_conv": 0.0,
+        "anchor_router_raw": 0.0,
+        "anchor_std": 2.384185791015625e-07,
+        "partner_mean": 4.76837158203125e-07,
+        "partner_router_conv": 0.0,
+        "partner_router_raw": 0.0,
+        "partner_std": 2.384185791015625e-07
+      },
+      "max_boundary_logit_difference": 0.0,
+      "max_token_logit_difference": 0.0,
+      "maximum_difference": 4.76837158203125e-07,
+      "prefix": 95,
+      "status": "PASS"
+    },
+    {
+      "batch": 1,
+      "cache_max_differences": {
+        "anchor_mean": 0.0,
+        "anchor_router_conv": 0.0,
+        "anchor_router_raw": 0.0,
+        "anchor_std": 1.1920928955078125e-07,
+        "partner_mean": 0.0,
+        "partner_router_conv": 0.0,
+        "partner_router_raw": 0.0,
+        "partner_std": 1.1920928955078125e-07
+      },
+      "max_boundary_logit_difference": 0.0,
+      "max_token_logit_difference": 0.0,
+      "maximum_difference": 1.1920928955078125e-07,
+      "prefix": 96,
+      "status": "PASS"
+    },
+    {
+      "batch": 8,
+      "cache_max_differences": {
+        "anchor_mean": 0.0,
+        "anchor_router_conv": 0.0,
+        "anchor_router_raw": 0.0,
+        "anchor_std": 1.1920928955078125e-07,
+        "partner_mean": 0.0,
+        "partner_router_conv": 0.0,
+        "partner_router_raw": 0.0,
+        "partner_std": 1.1920928955078125e-07
+      },
+      "max_boundary_logit_difference": 0.0,
+      "max_token_logit_difference": 0.0,
+      "maximum_difference": 1.1920928955078125e-07,
+      "prefix": 96,
+      "status": "PASS"
+    },
+    {
+      "batch": 1,
+      "cache_max_differences": {
+        "anchor_mean": 4.76837158203125e-07,
+        "anchor_router_conv": 0.0,
+        "anchor_router_raw": 0.0,
+        "anchor_std": 2.384185791015625e-07,
+        "partner_mean": 4.76837158203125e-07,
+        "partner_router_conv": 0.0,
+        "partner_router_raw": 0.0,
+        "partner_std": 1.1920928955078125e-07
+      },
+      "max_boundary_logit_difference": 0.0,
+      "max_token_logit_difference": 0.0,
+      "maximum_difference": 4.76837158203125e-07,
+      "prefix": 447,
+      "status": "PASS"
+    },
+    {
+      "batch": 8,
+      "cache_max_differences": {
+        "anchor_mean": 9.5367431640625e-07,
+        "anchor_router_conv": 0.0,
+        "anchor_router_raw": 0.0,
+        "anchor_std": 2.384185791015625e-07,
+        "partner_mean": 4.76837158203125e-07,
+        "partner_router_conv": 0.0,
+        "partner_router_raw": 0.0,
+        "partner_std": 1.7881393432617188e-07
+      },
+      "max_boundary_logit_difference": 0.0,
+      "max_token_logit_difference": 0.0,
+      "maximum_difference": 9.5367431640625e-07,
+      "prefix": 447,
+      "status": "PASS"
+    },
+    {
+      "batch": 1,
+      "cache_max_differences": {
+        "anchor_mean": 0.0,
+        "anchor_router_conv": 0.0,
+        "anchor_router_raw": 0.0,
+        "anchor_std": 1.1920928955078125e-07,
+        "partner_mean": 0.0,
+        "partner_router_conv": 0.0,
+        "partner_router_raw": 0.0,
+        "partner_std": 2.384185791015625e-07
+      },
+      "max_boundary_logit_difference": 0.0,
+      "max_token_logit_difference": 0.0,
+      "maximum_difference": 2.384185791015625e-07,
+      "prefix": 448,
+      "status": "PASS"
+    },
+    {
+      "batch": 8,
+      "cache_max_differences": {
+        "anchor_mean": 0.0,
+        "anchor_router_conv": 0.0,
+        "anchor_router_raw": 0.0,
+        "anchor_std": 2.384185791015625e-07,
+        "partner_mean": 0.0,
+        "partner_router_conv": 0.0,
+        "partner_router_raw": 0.0,
+        "partner_std": 2.384185791015625e-07
+      },
+      "max_boundary_logit_difference": 0.0,
+      "max_token_logit_difference": 0.0,
+      "maximum_difference": 2.384185791015625e-07,
+      "prefix": 448,
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS"
+}

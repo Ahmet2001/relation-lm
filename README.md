@@ -7,7 +7,8 @@ components, stateful decode experiments, and Relation-LM-specific Triton
 selection kernels.
 
 > Research status: sparse routing preserves dense Relation LM quality with a
-> small BPB delta, while end-to-end sparse decode is still being optimized.
+> small BPB delta. The verified context-512 stateful path now matches dense at
+> batch 1 and exceeds it at batch 8.
 
 ## Core idea
 

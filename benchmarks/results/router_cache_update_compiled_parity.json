@@ -1,0 +1,27 @@
+{
+  "rows": [
+    {
+      "batch": 1,
+      "compile_seconds_fused": 6.447016000747681,
+      "compile_seconds_reference": 14.655234098434448,
+      "finite": true,
+      "max_boundary_logit_difference": 0.0,
+      "max_token_logit_difference": 0.0,
+      "sequence_equal": true,
+      "status": "PASS",
+      "steps": 32
+    },
+    {
+      "batch": 8,
+      "compile_seconds_fused": 7.2287561893463135,
+      "compile_seconds_reference": 8.42484450340271,
+      "finite": true,
+      "max_boundary_logit_difference": 0.0,
+      "max_token_logit_difference": 0.0,
+      "sequence_equal": true,
+      "status": "PASS",
+      "steps": 32
+    }
+  ],
+  "status": "PASS"
+}
