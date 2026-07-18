@@ -47,13 +47,11 @@ boundary_vocab = __import__("json").loads(
 )["id_to_boundary"]
 boundary_to_id = {value: index for index, value in enumerate(boundary_vocab)}
 
-encoded = factorize_document(tokenizer, "hello
-  world", boundary_to_id)
+encoded = factorize_document(tokenizer, "hello\n  world", boundary_to_id)
 text = reconstruct_document(
     tokenizer, encoded.token_ids, encoded.boundary_ids, boundary_vocab
 )
-assert text == "hello
-  world"
+assert text == "hello\n  world"
 ```
 
 ## Triton selection kernels
@@ -65,10 +63,12 @@ assert text == "hello
 - deterministic causal masking and anchor exclusion;
 - compatibility and strict-valid remote-block semantics.
 
-On the current 512-context stateful decode benchmark, the custom selector was
-about **9.4% faster at batch 1** and **6.7% faster at batch 8** than the generic
-Inductor/`torch.topk` sparse path. It did not yet beat the dense cached path,
-which motivates the next fused `relation_select` kernel.
+The packed `relation_select` operator fuses anchor routing, exact anchor
+selection, factorized partner projections, partner routing, and small-K partner
+selection into one custom op. On the 512-context stateful decode benchmark it
+was **8.9% faster at batch 1** and **9.3% faster at batch 8** than the generic
+Inductor/`torch.topk` sparse path. At batch 8 it also beat the earlier two-kernel
+Triton path by **2.5%**. Dense cached decode remains about 8% faster.
 
 ## Installation
 
@@ -110,16 +110,17 @@ src/relation_lm/
   - context 512: +0.119%
 - compiled/eager parity: approximately `2e-5` or better;
 - stateful compiled cache: up to 10x faster than eager full recomputation;
-- custom Triton selection: 6.7–9.4% faster than generic sparse selection;
-- remaining bottleneck: the two-stage anchor/partner launch boundary and the
-  intermediate partner projections.
+- packed fused `relation_select`: 8.9–9.3% faster than generic sparse selection;
+- packed fusion is approximately tied with the two-kernel path at batch 1 and
+  2.5% faster at batch 8;
+- remaining gap: dense cached decode is still about 8% faster at context 512.
 
 See [docs/benchmarks.md](docs/benchmarks.md) for protocol details.
 
 ## Roadmap
 
-1. Fuse anchor selection, anchor gather, partner projections, and partner top-k
-   into a single `relation_select` operator.
+1. Fuse relation operand gather, relation MLP reduction, and last-token output
+   preparation after `relation_select`.
 2. Add persistent/ring-buffer state for contexts beyond 512.
 3. Publish reproducible training recipes and small open checkpoints.
 4. Run multi-seed comparisons against matched Transformer baselines.

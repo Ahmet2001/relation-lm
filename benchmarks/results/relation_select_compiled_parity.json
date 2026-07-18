@@ -1,0 +1,9 @@
+{
+  "compile_seconds": 14.255882024765015,
+  "fullgraph": true,
+  "greedy_sequence_equal": true,
+  "max_boundary_logit_difference": 5.7220458984375e-06,
+  "max_token_logit_difference": 6.67572021484375e-06,
+  "status": "PASS",
+  "steps": 16
+}

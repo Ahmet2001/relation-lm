@@ -32,7 +32,9 @@ router block statistics. Only the new position is updated during decode.
 
 ## Kernel direction
 
-The current custom Triton operators fuse block routing with exact anchor or
-partner selection. The next operator, `relation_select`, will fuse the boundary
-between the two stages: anchor selection, anchor gather, partner projections,
-and partner top-k.
+The packed `relation_select` operator now fuses block routing, exact anchor
+selection, factorized partner-query assembly, partner block routing, and exact
+small-K partner selection. Exact and router partner projections are packed into
+one 128-channel query-side projection and one cached 128-channel anchor-side
+projection. The next fusion boundary is relation operand gather plus weighted
+relation reduction.

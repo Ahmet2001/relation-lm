@@ -2,7 +2,8 @@
 
 ## Near term
 
-- [ ] Single fused `relation_select` Triton operator.
+- [x] Single packed `relation_select` Triton operator.
+- [ ] Fuse relation operand gather and weighted relation reduction.
 - [ ] Persistent ring-buffer state and contexts beyond 512.
 - [ ] Kernel autotuning by batch, context, and head dimensions.
 - [ ] Nsight breakdown for router, selection, relation MLP, and output head.

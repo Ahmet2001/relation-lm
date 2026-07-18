@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "protocol": {
+    "description": "Synthetic current-position selection benchmark comparing packed relation_select with the two-operator anchor_select + partner_topk path.",
+    "context": 512,
+    "local_window": 16,
+    "top_blocks": 2,
+    "k_out": 8,
+    "warmup": 20,
+    "repeats": 100
+  },
+  "results": {
+    "batch_1": {
+      "index_equal": true,
+      "max_score_difference": 0.0,
+      "two_kernel_ms": 0.34379776000976564,
+      "packed_ms": 0.14487551689147948,
+      "packed_speedup": 2.3730563133541116
+    },
+    "batch_8": {
+      "index_equal": true,
+      "max_score_difference": 0.0,
+      "two_kernel_ms": 0.3483852767944336,
+      "packed_ms": 0.14664704322814942,
+      "packed_speedup": 2.375672015782994
+    }
+  }
+}

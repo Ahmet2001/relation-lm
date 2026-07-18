@@ -1,0 +1,59 @@
+{
+  "rows": [
+    {
+      "anchor_index_equal": true,
+      "anchor_score_max_difference": 0.0,
+      "batch": 1,
+      "context": 128,
+      "partner_score_max_difference": 4.76837158203125e-07,
+      "partner_valid_index_equal": true,
+      "status": "PASS"
+    },
+    {
+      "anchor_index_equal": true,
+      "anchor_score_max_difference": 0.0,
+      "batch": 8,
+      "context": 128,
+      "partner_score_max_difference": 1.9073486328125e-06,
+      "partner_valid_index_equal": true,
+      "status": "PASS"
+    },
+    {
+      "anchor_index_equal": true,
+      "anchor_score_max_difference": 0.0,
+      "batch": 1,
+      "context": 256,
+      "partner_score_max_difference": 2.384185791015625e-07,
+      "partner_valid_index_equal": true,
+      "status": "PASS"
+    },
+    {
+      "anchor_index_equal": true,
+      "anchor_score_max_difference": 0.0,
+      "batch": 8,
+      "context": 256,
+      "partner_score_max_difference": 8.344650268554688e-07,
+      "partner_valid_index_equal": true,
+      "status": "PASS"
+    },
+    {
+      "anchor_index_equal": true,
+      "anchor_score_max_difference": 0.0,
+      "batch": 1,
+      "context": 512,
+      "partner_score_max_difference": 1.9073486328125e-06,
+      "partner_valid_index_equal": true,
+      "status": "PASS"
+    },
+    {
+      "anchor_index_equal": true,
+      "anchor_score_max_difference": 0.0,
+      "batch": 8,
+      "context": 512,
+      "partner_score_max_difference": 1.9073486328125e-06,
+      "partner_valid_index_equal": true,
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS"
+}
