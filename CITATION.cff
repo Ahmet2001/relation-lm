@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+title: Relation LM
+message: "If you use this software, please cite this repository."
+type: software
+version: 0.1.0
+date-released: 2026-07-18
+license: MIT
+repository-code: "https://github.com/Ahmet2001/relation-lm"
+authors:
+  - name: Relation LM contributors

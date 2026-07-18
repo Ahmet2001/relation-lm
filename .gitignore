@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+build/
+dist/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+
+# ML artifacts
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+*.npy
+*.npz
+wandb/
+logs/
+results/
+data/
+datasets/
+checkpoints/
+
+# Compiler caches
+.triton/
+torchinductor_*/
