@@ -77,6 +77,20 @@ interleaved context-512 benchmark this made sparse decode **6.1% faster at
 batch 1** and **10.7% faster at batch 8** than the previous sparse path. The
 result matched dense decode at batch 1 and was **2.8% faster at batch 8**.
 
+## Multi-relation blocks and diagnostics
+
+The current reference checkpoint uses one anchor and up to eight partners per
+query. The repository also includes an experimental `MultiAnchorRelationBlock`:
+multiple distinct anchors are selected per query, every anchor chooses several
+partners, and all anchor positions are excluded from all partner sets inside
+that layer. `RelationBlockStack` provides sequential relation depth analogous
+to stacking attention layers.
+
+A 20M-checkpoint partner-structure report, including shared-partner reuse,
+anchor/partner role collisions, rank ablations, and near/middle/far partner
+location distributions, is documented in
+[docs/partner-structure.md](docs/partner-structure.md).
+
 ## Installation
 
 ```bash
