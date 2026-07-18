@@ -61,3 +61,24 @@ preparation now dominate more of the remaining runtime.
 
 Small JSON reports are stored in `benchmarks/results/`. Raw datasets, model
 checkpoints, and cluster logs are intentionally excluded.
+
+## Cached factorized relation reduction
+
+Nine-repeat median, context 512, 64 generated positions:
+
+| batch | dense cached | packed select | best relation reduction | sparse/dense |
+|---:|---:|---:|---:|---:|
+| 1 | 2547 tok/s | 2347 tok/s | **2398 tok/s** | 0.942x |
+| 8 | 11295 tok/s | 10357 tok/s | **10470 tok/s** | 0.927x |
+
+The first Relation-MLP layer is factorized exactly as
+`(W_a+W_d)a + (W_p-W_d)p + W_m(a*p) + b`. Anchor and partner
+contributions are cached per memory token; only the multiplicative term is
+computed for selected pairs. LayerNorm, active-K softmax, and weighted reduction
+are fused into one Triton kernel.
+
+The verified dispatcher uses fused current-token cache update for batch 1 and a
+separate cuBLAS cache projection for batch 8. Context parity was below `1.1e-6`;
+16-step fullgraph greedy parity passed with maximum logit difference below
+`6.7e-6`. A fully custom Triton `2304 → 576` projection was slower than cuBLAS
+and is intentionally not the recommended path.

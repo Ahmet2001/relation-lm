@@ -3,10 +3,10 @@
 ## Near term
 
 - [x] Single packed `relation_select` Triton operator.
-- [ ] Fuse relation operand gather and weighted relation reduction.
+- [x] Fuse relation operand gather and weighted relation reduction.
 - [ ] Persistent ring-buffer state and contexts beyond 512.
-- [ ] Kernel autotuning by batch, context, and head dimensions.
-- [ ] Nsight breakdown for router, selection, relation MLP, and output head.
+- [ ] Kernel autotuning and batch-adaptive relation-cache dispatch.
+- [ ] Optimize the remaining 2304-to-576 relation projection and output head.
 
 ## Reproducibility
 

@@ -1,0 +1,25 @@
+{
+  "rows": [
+    {
+      "compile_seconds": 12.738852977752686,
+      "fullgraph": true,
+      "greedy_sequence_equal": true,
+      "kind": "cached",
+      "max_boundary_logit_difference": 6.67572021484375e-06,
+      "max_token_logit_difference": 4.76837158203125e-06,
+      "status": "PASS",
+      "steps": 16
+    },
+    {
+      "compile_seconds": 7.305368661880493,
+      "fullgraph": true,
+      "greedy_sequence_equal": true,
+      "kind": "cache_update",
+      "max_boundary_logit_difference": 6.67572021484375e-06,
+      "max_token_logit_difference": 5.7220458984375e-06,
+      "status": "PASS",
+      "steps": 16
+    }
+  ],
+  "status": "PASS"
+}

@@ -111,19 +111,21 @@ src/relation_lm/
 - compiled/eager parity: approximately `2e-5` or better;
 - stateful compiled cache: up to 10x faster than eager full recomputation;
 - packed fused `relation_select`: 8.9–9.3% faster than generic sparse selection;
-- packed fusion is approximately tied with the two-kernel path at batch 1 and
-  2.5% faster at batch 8;
-- remaining gap: dense cached decode is still about 8% faster at context 512.
+- cached factorized relation hidden + fused norm/reduction adds another 2.2% at
+  batch 1 and 1.1% at batch 8 over packed selection;
+- verified batch-adaptive policy: fused cache update at batch 1, separate cuBLAS
+  cache update at batch 8;
+- remaining gap: dense cached decode is 5.8–7.3% faster at context 512.
 
 See [docs/benchmarks.md](docs/benchmarks.md) for protocol details.
 
 ## Roadmap
 
-1. Fuse relation operand gather, relation MLP reduction, and last-token output
-   preparation after `relation_select`.
-2. Add persistent/ring-buffer state for contexts beyond 512.
-3. Publish reproducible training recipes and small open checkpoints.
-4. Run multi-seed comparisons against matched Transformer baselines.
+1. Optimize the remaining `2304 → 576` relation projection while retaining
+   cuBLAS-quality numerical parity.
+2. Fuse last-token output preparation and investigate batch-adaptive dispatch.
+3. Add persistent/ring-buffer state for contexts beyond 512.
+4. Publish reproducible training recipes, checkpoints, and multi-seed baselines.
 
 ## Contributing
 

@@ -1,0 +1,101 @@
+{
+  "rows": [
+    {
+      "batch": 1,
+      "context": 128,
+      "kind": "cached",
+      "max_context_difference": 7.152557373046875e-07,
+      "mean_context_difference": 1.5324651769788034e-07,
+      "status": "PASS"
+    },
+    {
+      "batch": 8,
+      "context": 128,
+      "kind": "cached",
+      "max_context_difference": 9.5367431640625e-07,
+      "mean_context_difference": 1.3469718851411017e-07,
+      "status": "PASS"
+    },
+    {
+      "batch": 1,
+      "context": 256,
+      "kind": "cached",
+      "max_context_difference": 9.5367431640625e-07,
+      "mean_context_difference": 1.888646607994815e-07,
+      "status": "PASS"
+    },
+    {
+      "batch": 8,
+      "context": 256,
+      "kind": "cached",
+      "max_context_difference": 9.5367431640625e-07,
+      "mean_context_difference": 1.602136592282477e-07,
+      "status": "PASS"
+    },
+    {
+      "batch": 1,
+      "context": 512,
+      "kind": "cached",
+      "max_context_difference": 6.752088665962219e-07,
+      "mean_context_difference": 1.527821780200611e-07,
+      "status": "PASS"
+    },
+    {
+      "batch": 8,
+      "context": 512,
+      "kind": "cached",
+      "max_context_difference": 1.0728836059570312e-06,
+      "mean_context_difference": 1.5404374664740317e-07,
+      "status": "PASS"
+    },
+    {
+      "batch": 1,
+      "context": 128,
+      "kind": "cache_update",
+      "max_context_difference": 7.152557373046875e-07,
+      "mean_context_difference": 1.5324651769788034e-07,
+      "status": "PASS"
+    },
+    {
+      "batch": 8,
+      "context": 128,
+      "kind": "cache_update",
+      "max_context_difference": 9.5367431640625e-07,
+      "mean_context_difference": 1.3412631005849107e-07,
+      "status": "PASS"
+    },
+    {
+      "batch": 1,
+      "context": 256,
+      "kind": "cache_update",
+      "max_context_difference": 9.5367431640625e-07,
+      "mean_context_difference": 1.888646607994815e-07,
+      "status": "PASS"
+    },
+    {
+      "batch": 8,
+      "context": 256,
+      "kind": "cache_update",
+      "max_context_difference": 9.5367431640625e-07,
+      "mean_context_difference": 1.6078440978617436e-07,
+      "status": "PASS"
+    },
+    {
+      "batch": 1,
+      "context": 512,
+      "kind": "cache_update",
+      "max_context_difference": 6.752088665962219e-07,
+      "mean_context_difference": 1.527821780200611e-07,
+      "status": "PASS"
+    },
+    {
+      "batch": 8,
+      "context": 512,
+      "kind": "cache_update",
+      "max_context_difference": 1.0728836059570312e-06,
+      "mean_context_difference": 1.53994804463764e-07,
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS"
+}
