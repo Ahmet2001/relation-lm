@@ -24,11 +24,11 @@ dist/
 *.npy
 *.npz
 wandb/
-logs/
-results/
-data/
-datasets/
-checkpoints/
+/logs/
+/results/
+/data/
+/datasets/
+/checkpoints/
 
 # Compiler caches
 .triton/

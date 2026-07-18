@@ -1,0 +1,152 @@
+{
+  "batches": {
+    "1": {
+      "comparisons": {
+        "torch_sparse_vs_dense": 0.845088413233965,
+        "triton_vs_dense": 0.9242567335322392,
+        "triton_vs_torch_sparse": 1.093680517989017
+      },
+      "rows": {
+        "dense": {
+          "batch": 1,
+          "boundary_checksum": 0,
+          "checksum_consistent": true,
+          "compile_seconds": 5.623737335205078,
+          "median_ms": 25.11564826965332,
+          "median_tokens_per_second": 2548.212146979689,
+          "samples_ms": [
+            25.160703659057617,
+            25.14124870300293,
+            25.10745620727539,
+            25.1146240234375,
+            25.11667251586914,
+            25.11155128479004,
+            25.197568893432617,
+            25.10848045349121,
+            25.11564826965332
+          ],
+          "token_checksum": 16,
+          "variant": "dense"
+        },
+        "torch_sparse": {
+          "batch": 1,
+          "boundary_checksum": 0,
+          "checksum_consistent": true,
+          "compile_seconds": 1.119828701019287,
+          "median_ms": 29.71955108642578,
+          "median_tokens_per_second": 2153.4645598745806,
+          "samples_ms": [
+            29.814783096313477,
+            29.71955108642578,
+            29.7205753326416,
+            29.724672317504883,
+            29.710336685180664,
+            29.717504501342773,
+            29.713407516479492,
+            29.726720809936523,
+            29.711360931396484
+          ],
+          "token_checksum": 16,
+          "variant": "torch_sparse"
+        },
+        "triton_compat": {
+          "batch": 1,
+          "boundary_checksum": 0,
+          "checksum_consistent": true,
+          "compile_seconds": 1.3543756008148193,
+          "median_ms": 27.173887252807617,
+          "median_tokens_per_second": 2355.2022353146217,
+          "samples_ms": [
+            27.247615814208984,
+            27.15648078918457,
+            27.16160011291504,
+            27.167743682861328,
+            27.173887252807617,
+            27.296768188476562,
+            27.174911499023438,
+            27.184127807617188,
+            27.17184066772461
+          ],
+          "token_checksum": 16,
+          "variant": "triton_compat"
+        }
+      }
+    },
+    "8": {
+      "comparisons": {
+        "torch_sparse_vs_dense": 0.8405829785278081,
+        "triton_vs_dense": 0.8964848035771703,
+        "triton_vs_torch_sparse": 1.0665036367346723
+      },
+      "rows": {
+        "dense": {
+          "batch": 8,
+          "boundary_checksum": 1,
+          "checksum_consistent": true,
+          "compile_seconds": 1.0941765308380127,
+          "median_ms": 45.414398193359375,
+          "median_tokens_per_second": 11273.95760745468,
+          "samples_ms": [
+            45.60179138183594,
+            45.458431243896484,
+            45.37241744995117,
+            45.418495178222656,
+            45.41030502319336,
+            45.38982391357422,
+            45.414398193359375,
+            45.40313720703125,
+            45.430782318115234
+          ],
+          "token_checksum": 388,
+          "variant": "dense"
+        },
+        "torch_sparse": {
+          "batch": 8,
+          "boundary_checksum": 2,
+          "checksum_consistent": true,
+          "compile_seconds": 1.0261387825012207,
+          "median_ms": 54.02726364135742,
+          "median_tokens_per_second": 9476.696865470496,
+          "samples_ms": [
+            54.07436752319336,
+            54.02214431762695,
+            54.024192810058594,
+            54.03647994995117,
+            54.017024993896484,
+            54.042625427246094,
+            54.04364776611328,
+            54.02726364135742,
+            54.017024993896484
+          ],
+          "token_checksum": 1338,
+          "variant": "torch_sparse"
+        },
+        "triton_compat": {
+          "batch": 8,
+          "boundary_checksum": 2,
+          "checksum_consistent": true,
+          "compile_seconds": 0.8676750659942627,
+          "median_ms": 50.658302307128906,
+          "median_tokens_per_second": 10106.931671256354,
+          "samples_ms": [
+            50.75455856323242,
+            50.683902740478516,
+            50.64396667480469,
+            50.65216064453125,
+            50.67571258544922,
+            50.66649627685547,
+            50.65011215209961,
+            50.65011215209961,
+            50.658302307128906
+          ],
+          "token_checksum": 1338,
+          "variant": "triton_compat"
+        }
+      }
+    }
+  },
+  "context": 512,
+  "prefix": 448,
+  "status": "PASS",
+  "steps": 64
+}

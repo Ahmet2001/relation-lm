@@ -1,0 +1,109 @@
+{
+  "contexts": {
+    "128": {
+      "absolute_difference": 0.0023028781651848185,
+      "batch_size": 4,
+      "batches": 100,
+      "compile_seconds": {
+        "dense_seconds": 13.616960763931274,
+        "sparse_seconds": 10.888279676437378
+      },
+      "compiled": true,
+      "compiled_eager_parity_max_logit_difference": 1.52587890625e-05,
+      "context": 128,
+      "dense_bpb": 1.8193793638095745,
+      "final_policy": {
+        "local_window": 16,
+        "top_blocks": 2
+      },
+      "initial_policy": {
+        "local_window": 16,
+        "top_blocks": 2
+      },
+      "paired_95_interval": [
+        0.0015573385618255144,
+        0.0030835620327988277
+      ],
+      "paired_batch_mean_difference": 0.002320450297312171,
+      "policy": {
+        "local_window": 16,
+        "top_blocks": 2
+      },
+      "raw_bytes": 232026,
+      "relative_percent": 0.1265749304951361,
+      "sparse_better_batch_fraction": 0.27,
+      "sparse_bpb": 1.8216822419747594
+    },
+    "256": {
+      "absolute_difference": 0.003467658677722474,
+      "batch_size": 4,
+      "batches": 100,
+      "compile_seconds": {
+        "dense_seconds": 8.213812589645386,
+        "sparse_seconds": 10.599406003952026
+      },
+      "compiled": true,
+      "compiled_eager_parity_max_logit_difference": 2.09808349609375e-05,
+      "context": 256,
+      "dense_bpb": 1.857539511079614,
+      "final_policy": {
+        "local_window": 16,
+        "top_blocks": 1
+      },
+      "initial_policy": {
+        "local_window": 16,
+        "top_blocks": 1
+      },
+      "paired_95_interval": [
+        0.0028635848514863135,
+        0.004107482396142173
+      ],
+      "paired_batch_mean_difference": 0.003485533623814243,
+      "policy": {
+        "local_window": 16,
+        "top_blocks": 1
+      },
+      "raw_bytes": 454530,
+      "relative_percent": 0.1866802109478171,
+      "sparse_better_batch_fraction": 0.09,
+      "sparse_bpb": 1.8610071697573365
+    },
+    "512": {
+      "absolute_difference": 0.0022121300464394977,
+      "batch_size": 4,
+      "batches": 100,
+      "compile_seconds": {
+        "dense_seconds": 8.279927730560303,
+        "sparse_seconds": 10.578660249710083
+      },
+      "compiled": true,
+      "compiled_eager_parity_max_logit_difference": 1.9073486328125e-05,
+      "context": 512,
+      "dense_bpb": 1.8568714032481008,
+      "final_policy": {
+        "local_window": 16,
+        "top_blocks": 2
+      },
+      "initial_policy": {
+        "local_window": 16,
+        "top_blocks": 2
+      },
+      "paired_95_interval": [
+        0.0018563122129524867,
+        0.002578556884775502
+      ],
+      "paired_batch_mean_difference": 0.0022174345488639945,
+      "policy": {
+        "local_window": 16,
+        "top_blocks": 2
+      },
+      "raw_bytes": 909197,
+      "relative_percent": 0.11913210804851465,
+      "sparse_better_batch_fraction": 0.08,
+      "sparse_bpb": 1.8590835332945403
+    }
+  },
+  "micro_policy_512": null,
+  "scientific_status": "PAIRED_VALIDATION_PASS",
+  "status": "PASS"
+}
