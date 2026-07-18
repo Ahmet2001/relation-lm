@@ -159,3 +159,11 @@ Issues and pull requests are welcome. Please read
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+### Distance-aware RelationBlock experiment
+
+A three-block, four-anchor experiment with explicit near/middle/far partner
+quotas is documented in
+[`docs/experiments/distance_quota_relation_blocks.md`](docs/experiments/distance_quota_relation_blocks.md).
+The code includes anchor exclusion, cross-anchor overlap loss, zone-mass loss,
+and routing diagnostics.
