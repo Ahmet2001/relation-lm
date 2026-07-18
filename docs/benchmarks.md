@@ -82,3 +82,23 @@ separate cuBLAS cache projection for batch 8. Context parity was below `1.1e-6`;
 16-step fullgraph greedy parity passed with maximum logit difference below
 `6.7e-6`. A fully custom Triton `2304 → 576` projection was slower than cuBLAS
 and is intentionally not the recommended path.
+
+
+## Packed sparse-cache projection
+
+Three validation prefixes, nine interleaved repeats per prefix, context 512 and
+64 generated positions:
+
+| batch | dense cached | previous sparse | packed-cache sparse | packed vs previous | packed vs dense |
+|---:|---:|---:|---:|---:|---:|
+| 1 | 25.483 ms | 27.004 ms | 25.462 ms | 1.061x | 1.001x |
+| 8 | 45.704 ms | 49.168 ms | 44.433 ms | 1.107x | 1.028x |
+
+The projection concatenates anchor key, partner key, relation operand,
+partner-anchor factor, anchor-router key, and partner-router key weights into a
+single `576 → 512` matrix. Six cache tensors are recovered with view/split
+operations before their state updates.
+
+A 100-batch partner-budget confirmation found K=6 at +0.130% BPB versus dense,
+but it was only 1.008x faster than K=8 at batch 1 and 1.002x at batch 8. K=8
+therefore remains the default partner budget.

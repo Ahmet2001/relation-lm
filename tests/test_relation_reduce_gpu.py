@@ -158,3 +158,43 @@ def test_relation_reduce_kernels(batch: int) -> None:
     )
     torch.cuda.synchronize()
     assert torch.allclose(fused_context, reference_context, atol=2.0e-4, rtol=2.0e-5)
+
+
+@pytest.mark.parametrize("batch", [1, 8])
+@pytest.mark.parametrize("k_out", [5, 6, 7])
+def test_relation_norm_reduce_non_power_of_two_budget(
+    batch: int,
+    k_out: int,
+) -> None:
+    """Triton rows are padded to a power of two and masked back to K."""
+    if not torch.cuda.is_available():
+        pytest.skip("CUDA is required")
+    torch.manual_seed(20260830 + 10 * batch + k_out)
+    device = torch.device("cuda")
+    output_dim = 576
+    raw = torch.randn(batch, k_out, output_dim, device=device)
+    scores = torch.randn(batch, k_out, device=device)
+    scores[:, -1] = -torch.inf
+    norm_weight = torch.randn(output_dim, device=device) * 0.05 + 1.0
+    norm_bias = torch.randn(output_dim, device=device) * 0.01
+    position = torch.tensor(511, device=device, dtype=torch.long)
+    eps = 1.0e-5
+    expected = _reference_context(
+        raw,
+        scores,
+        norm_weight,
+        norm_bias,
+        position,
+        eps,
+    )
+    actual = relation_norm_reduce(
+        raw,
+        scores,
+        norm_weight,
+        norm_bias,
+        position,
+        eps,
+    )
+    torch.cuda.synchronize()
+    assert torch.isfinite(actual).all()
+    assert torch.allclose(actual, expected, atol=2.0e-4, rtol=2.0e-5)

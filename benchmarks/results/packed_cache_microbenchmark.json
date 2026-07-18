@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "batch": 1,
+      "separate_ms": 0.11527168273925781,
+      "packed_ms": 0.03127978642781575,
+      "speedup": 3.6851812593180533,
+      "max_difference": 1.7881393432617188e-07
+    },
+    {
+      "batch": 8,
+      "separate_ms": 0.13082965850830078,
+      "packed_ms": 0.03799040158589681,
+      "speedup": 3.443755607913045,
+      "max_difference": 0.0
+    }
+  ]
+}

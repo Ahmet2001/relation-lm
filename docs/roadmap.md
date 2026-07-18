@@ -3,6 +3,7 @@
 ## Near term
 
 - [x] Single packed `relation_select` Triton operator.
+- [x] Packed sparse cache projection for token-local memory features.
 - [x] Fuse relation operand gather and weighted relation reduction.
 - [ ] Persistent ring-buffer state and contexts beyond 512.
 - [ ] Kernel autotuning and batch-adaptive relation-cache dispatch.

@@ -367,18 +367,20 @@ def _relation_norm_reduce_kernel(
     OUT,
     OUTPUT_D: tl.constexpr,
     K_OUT: tl.constexpr,
+    K_BLOCK: tl.constexpr,
     BLOCK_D: tl.constexpr,
     EPS: tl.constexpr,
 ):
     batch_index = tl.program_id(0)
-    rows = tl.arange(0, K_OUT)
+    rows = tl.arange(0, K_BLOCK)
     columns = tl.arange(0, BLOCK_D)
+    valid_row = rows < K_OUT
     valid_column = columns < OUTPUT_D
     raw = tl.load(
         RAW
         + (batch_index * K_OUT + rows[:, None]) * OUTPUT_D
         + columns[None, :],
-        mask=valid_column[None, :],
+        mask=valid_row[:, None] & valid_column[None, :],
         other=0.0,
     ).to(tl.float32)
     mean = tl.sum(raw, axis=1) / OUTPUT_D
@@ -397,8 +399,12 @@ def _relation_norm_reduce_kernel(
     position = tl.load(POSITION).to(tl.float32)
     k_limit = tl.ceil(tl.log2(position + 2.0)).to(tl.int32)
     k_limit = tl.minimum(tl.maximum(k_limit, 1), K_OUT)
-    scores = tl.load(SCORES + batch_index * K_OUT + rows).to(tl.float32)
-    active = (rows < k_limit) & (scores > -1.0e30)
+    scores = tl.load(
+        SCORES + batch_index * K_OUT + rows,
+        mask=valid_row,
+        other=-float("inf"),
+    ).to(tl.float32)
+    active = valid_row & (rows < k_limit) & (scores > -1.0e30)
     safe_scores = tl.where(active, scores, -1.0e4)
     maximum = tl.max(safe_scores, axis=0)
     probability = tl.exp(safe_scores - maximum) * active.to(tl.float32)
@@ -436,6 +442,7 @@ def relation_norm_reduce(
         context,
         OUTPUT_D=output_dim,
         K_OUT=k_out,
+        K_BLOCK=triton.next_power_of_2(k_out),
         BLOCK_D=triton.next_power_of_2(output_dim),
         EPS=norm_eps,
         num_warps=8,

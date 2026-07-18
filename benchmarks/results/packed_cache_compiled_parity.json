@@ -1,0 +1,27 @@
+{
+  "rows": [
+    {
+      "batch": 1,
+      "compile_seconds_packed": 6.936975717544556,
+      "compile_seconds_reference": 14.874209880828857,
+      "finite": true,
+      "max_boundary_logit_difference": 1.9073486328125e-06,
+      "max_token_logit_difference": 3.814697265625e-06,
+      "sequence_equal": true,
+      "status": "PASS",
+      "steps": 16
+    },
+    {
+      "batch": 8,
+      "compile_seconds_packed": 8.067700862884521,
+      "compile_seconds_reference": 8.575989961624146,
+      "finite": true,
+      "max_boundary_logit_difference": 3.814697265625e-06,
+      "max_token_logit_difference": 4.76837158203125e-06,
+      "sequence_equal": true,
+      "status": "PASS",
+      "steps": 16
+    }
+  ],
+  "status": "PASS"
+}

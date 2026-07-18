@@ -68,7 +68,13 @@ selection, factorized partner projections, partner routing, and small-K partner
 selection into one custom op. On the 512-context stateful decode benchmark it
 was **8.9% faster at batch 1** and **9.3% faster at batch 8** than the generic
 Inductor/`torch.topk` sparse path. At batch 8 it also beat the earlier two-kernel
-Triton path by **2.5%**. Dense cached decode remains about 8% faster.
+Triton path by **2.5%**.
+
+The packed sparse-cache projection then concatenates six token-local memory
+projections into one `576 → 512` linear operation. In a three-sample,
+interleaved context-512 benchmark this made sparse decode **6.1% faster at
+batch 1** and **10.7% faster at batch 8** than the previous sparse path. The
+result matched dense decode at batch 1 and was **2.8% faster at batch 8**.
 
 ## Installation
 
@@ -111,20 +117,23 @@ src/relation_lm/
 - compiled/eager parity: approximately `2e-5` or better;
 - stateful compiled cache: up to 10x faster than eager full recomputation;
 - packed fused `relation_select`: 8.9–9.3% faster than generic sparse selection;
-- cached factorized relation hidden + fused norm/reduction adds another 2.2% at
-  batch 1 and 1.1% at batch 8 over packed selection;
-- verified batch-adaptive policy: fused cache update at batch 1, separate cuBLAS
-  cache update at batch 8;
-- remaining gap: dense cached decode is 5.8–7.3% faster at context 512.
+- cached factorized relation hidden + fused norm/reduction reduces relation-tail
+  overhead while retaining approximately `7e-6` compiled parity;
+- one packed `576 → 512` sparse-cache projection replaces six small linear
+  projections and improves the previous sparse path by 6.1–10.7%;
+- context-512 sparse decode is now approximately tied with dense at batch 1 and
+  2.8% faster at batch 8 in the verified three-sample benchmark;
+- reducing the partner budget from 8 to 6 passed quality but improved the robust
+  K=8 path by less than 1%, so the recommended default remains K=8.
 
 See [docs/benchmarks.md](docs/benchmarks.md) for protocol details.
 
 ## Roadmap
 
-1. Optimize the remaining `2304 → 576` relation projection while retaining
-   cuBLAS-quality numerical parity.
-2. Fuse last-token output preparation and investigate batch-adaptive dispatch.
-3. Add persistent/ring-buffer state for contexts beyond 512.
+1. Fuse packed router-key projection, causal convolution, and block-statistics
+   updates into one state mutation operator.
+2. Add persistent/ring-buffer state for contexts beyond 512.
+3. Fuse last-token output preparation where it improves end-to-end latency.
 4. Publish reproducible training recipes, checkpoints, and multi-seed baselines.
 
 ## Contributing
